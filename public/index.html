@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngpizzeria">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MEAN Pizzeria</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+    
+        <div class="jumbotron text-center">
+            <h1>Pedidos de Pizza <span class="label label-info">{{ pizzas.length }}</span></h1>
+        </div>
+        
+        <div id="todo-list" class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+               
+                 <div class="table-responsive">
+                     <table class="table table-hover table-bordered">
+                         <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Origen</th>
+                                <th>Ingredientes</th>
+                                <th>Eliminar</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                             <tr ng-repeat="pizza in pizzas">
+                                 <td>{{pizza._id}}</td>
+                                 <td>{{pizza.nombre}}</td>
+                                 <td>{{pizza.origen}}</td>
+                                 <td>{{pizza.ingredientes[0]}} \ {{pizza.ingredientes[1]}} \ {{pizza.ingredientes[2]}}</td>
+
+                                 <td><button class="btn btn-danger" ng-click="deletePizza(pizza._id)">Eliminar</button></td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+         <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="ID" ng-model="formData.id">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="formData.nombre">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Origen" ng-model="formData.origen">
+                        <!-- <h4 class="text-center">Seleccione los ingredientes:</h4>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="formData.ing1">
+                            Jamón</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="formData.ing2">
+                            Carne</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="formData.ing3">
+                            Cebolla</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="formData.ing4">
+                            Pepperoni</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="formData.ing5">
+                            Queso</label>
+                        </div> -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="ingrediente 1" ng-model="formData.ing1">
+                        <input type="text" class="form-control input-lg text-center" placeholder="ingrediente 2" ng-model="formData.ing2">
+                        <input type="text" class="form-control input-lg text-center" placeholder="ingrediente 3" ng-model="formData.ing3">
+                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="createPizza()">Añadir</button>
+                </form>
+            </div>
+        </div>
+        <div class="row update">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <h2>Modificar Origen:</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="ID" ng-model="updateData.id">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Origen nuevo" ng-model="updateData.origen">
+                    </div>
+                    <button class="btn btn-success btn-lg" ng-click="updatePizza()">Modificar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
+            <button type="button" aria-hidden="true" class="close" data-notify="dismiss"></button>
+            <span data-notify="icon"></span>
+            <span data-notify="title"></span>
+            <span data-notify="message"></span>
+            <a href="{3}" target="{4}" data-notify="url"></a>
+        </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="main.js"></script>
+    <script src = "bootstrap-notify.min.js"></script>
+
+</body>
+</html>

@@ -82,5 +82,5 @@ app.get('*', function(req, res){
 });
 
 app.listen(8080, function(){
-	console.log('MEAN corriendo on port 8080');
+	console.log('MEAN running on port 8080');
 });
